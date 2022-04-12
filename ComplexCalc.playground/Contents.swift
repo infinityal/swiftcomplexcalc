@@ -7,6 +7,14 @@ class Calculator {
         return lhs + rhs;
     }
     
+    func add(_ args: [Int]) -> Int{
+        var sum = 0;
+        for i in args{
+            sum += i;
+        }
+        return sum;
+    }
+    
     func subtract(lhs: Int, rhs: Int) -> Int{
         return lhs - rhs;
     }
@@ -15,12 +23,28 @@ class Calculator {
         return lhs * rhs;
     }
     
+    func multiply(_ args: [Int]) -> Int{
+        var total = 1;
+        for i in args{
+            total *= i;
+        }
+        return total
+    }
+    
     func divide(lhs: Int, rhs: Int) -> Int{
         return lhs / rhs;
     }
     
     func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int{
         return op(lhs, rhs);
+    }
+    
+    func count(_ args: [Int]) -> Int{
+        return args.count;
+    }
+    
+    func avg(_ args: [Int]) -> Int{
+        return self.add(args) / self.count(args);
     }
 }
 
@@ -41,7 +65,7 @@ calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rhs) + (
 calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
     // This is the second, more terse, style; either works
 
-/*
+
 calc.add([1, 2, 3, 4, 5]) == 15
 calc.multiply([1, 2, 3, 4, 5]) == 120
 calc.count([1, 2, 3, 4, 5, 6, 7, 8]) == 8
@@ -50,7 +74,7 @@ calc.avg([2, 2, 2, 2, 2, 2]) == 2
 calc.avg([1, 2, 3, 4, 5]) == 3
 calc.avg([1]) == 1
 
-
+/*
 calc.mathOp(args: [1, 2, 3], beg: 0, op: { $0 + $1 }) == 6
     // this is (((0 op 1) op 2) op 3)
 calc.mathOp(args: [1, 2, 3, 4, 5], beg: 0, op: { $0 + $1 }) == 15
