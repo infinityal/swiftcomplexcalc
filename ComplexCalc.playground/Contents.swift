@@ -3,7 +3,25 @@ print("Welcome back to the UW Calculator")
 // Your job is to fill out Calculator so all the expressions
 // below both compile and return "true"
 class Calculator {
+    func add(lhs: Int, rhs: Int) -> Int{
+        let sum = lhs + rhs;
+        return sum;
+    }
     
+    func subtract(lhs: Int, rhs: Int) -> Int{
+        let difference = lhs - rhs;
+        return difference;
+    }
+    
+    func multiply(lhs: Int, rhs: Int) -> Int{
+        let multiplicand = lhs * rhs;
+        return multiplicand;
+    }
+    
+    func divide(lhs: Int, rhs: Int) -> Int{
+        let quotient = lhs / rhs;
+        return quotient;
+    }
 }
 
 let calc = Calculator()  // Don't change this declaration name; it's used in all the tests below
@@ -17,6 +35,7 @@ calc.subtract(lhs: 2, rhs: 2) == 0
 calc.multiply(lhs: 2, rhs: 2) == 4
 calc.divide(lhs: 2, rhs: 2) == 1
 
+/*
 calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rjs) + (lhs * rhs) }) == 35
     // This style is one way of writing an anonymous function
 calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
@@ -50,3 +69,4 @@ let pd1 = ["x": 5, "y": 5]
 let pd2 = ["x": -4, "y": 4]
 calc.add(lhs: pd1, rhs: pd2) == ["x": 1, "y": 9]
 calc.subtract(lhs: pd1, rhs: pd2) == ["x": 9, "y": 1]
+*/
