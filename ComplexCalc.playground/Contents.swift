@@ -4,23 +4,23 @@ print("Welcome back to the UW Calculator")
 // below both compile and return "true"
 class Calculator {
     func add(lhs: Int, rhs: Int) -> Int{
-        let sum = lhs + rhs;
-        return sum;
+        return lhs + rhs;
     }
     
     func subtract(lhs: Int, rhs: Int) -> Int{
-        let difference = lhs - rhs;
-        return difference;
+        return lhs - rhs;
     }
     
     func multiply(lhs: Int, rhs: Int) -> Int{
-        let multiplicand = lhs * rhs;
-        return multiplicand;
+        return lhs * rhs;
     }
     
     func divide(lhs: Int, rhs: Int) -> Int{
-        let quotient = lhs / rhs;
-        return quotient;
+        return lhs / rhs;
+    }
+    
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int{
+        return op(lhs, rhs);
     }
 }
 
@@ -35,12 +35,13 @@ calc.subtract(lhs: 2, rhs: 2) == 0
 calc.multiply(lhs: 2, rhs: 2) == 4
 calc.divide(lhs: 2, rhs: 2) == 1
 
-/*
-calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rjs) + (lhs * rhs) }) == 35
+
+calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rhs) + (lhs * rhs) }) == 35
     // This style is one way of writing an anonymous function
 calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
     // This is the second, more terse, style; either works
 
+/*
 calc.add([1, 2, 3, 4, 5]) == 15
 calc.multiply([1, 2, 3, 4, 5]) == 120
 calc.count([1, 2, 3, 4, 5, 6, 7, 8]) == 8
@@ -48,6 +49,7 @@ calc.count([]) == 0
 calc.avg([2, 2, 2, 2, 2, 2]) == 2
 calc.avg([1, 2, 3, 4, 5]) == 3
 calc.avg([1]) == 1
+
 
 calc.mathOp(args: [1, 2, 3], beg: 0, op: { $0 + $1 }) == 6
     // this is (((0 op 1) op 2) op 3)
